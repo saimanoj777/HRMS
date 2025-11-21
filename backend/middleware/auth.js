@@ -3,7 +3,7 @@ const db = require('../db');
 const path = require('path');
 const fs = require('fs');
 
-const JWT_SECRET = 'your-super-secret-jwt-key-hrms-2025';
+const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-hrms-2025';
 
 const authenticate = (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];

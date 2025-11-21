@@ -1,5 +1,9 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./hrms.db');
+const path = require('path');
+const dbPath = process.env.NODE_ENV === 'production' 
+  ? path.join(process.env.RENDER_VOLUME_PATH || '/var/data', 'hrms.db')
+  : './hrms.db';
+const db = new sqlite3.Database(dbPath);
 
 db.serialize(() => {
   db.run(`
