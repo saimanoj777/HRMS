@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: hrms-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run rebuild
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PORT
+        value: 10000
+
+  - type: web
+    name: hrms-frontend
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: NODE_ENV
+        value: production
+    domains:
+      - your-custom-domain.com # Optional

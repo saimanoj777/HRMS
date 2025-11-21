@@ -16,12 +16,24 @@ const authenticate = (req, res, next) => {
   });
 };
 
+// Ensure logs directory exists
+const logsDir = path.join(__dirname, '..', 'logs');
+if (!fs.existsSync(logsDir)) {
+  fs.mkdirSync(logsDir, { recursive: true });
+}
+
+// Ensure activity log file exists
+const logFile = path.join(logsDir, 'activity.log');
+if (!fs.existsSync(logFile)) {
+  fs.writeFileSync(logFile, '');
+}
+
 const logActivity = (userId, action) => {
   const timestamp = new Date().toISOString();
   const logEntry = `[${timestamp}] User '${userId}' ${action}\n`;
-//   require('fs').appendFileSync('./backend/logs/activity.log', logEntry);
-  const logPath = path.join(__dirname, '..', 'logs', 'activity.log');
-  fs.appendFileSync(logPath, logEntry);
+  
+  // Append to log file
+  fs.appendFileSync(logFile, logEntry);
 };
 
 module.exports = { authenticate, logActivity, JWT_SECRET };

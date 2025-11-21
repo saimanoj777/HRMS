@@ -1,9 +1,40 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const dbPath = process.env.NODE_ENV === 'production' 
-  ? path.join(process.env.RENDER_VOLUME_PATH || '/var/data', 'hrms.db')
-  : './hrms.db';
-const db = new sqlite3.Database(dbPath);
+const fs = require('fs');
+
+// Determine the database path based on environment
+let dbPath;
+if (process.env.NODE_ENV === 'production' && process.env.RENDER_VOLUME_PATH) {
+  // Render production environment with volume
+  const volumePath = process.env.RENDER_VOLUME_PATH;
+  // Ensure the directory exists
+  if (!fs.existsSync(volumePath)) {
+    fs.mkdirSync(volumePath, { recursive: true });
+  }
+  dbPath = path.join(volumePath, 'hrms.db');
+} else if (process.env.NODE_ENV === 'production') {
+  // Render production environment without volume (use /tmp which is writable)
+  dbPath = path.join('/tmp', 'hrms.db');
+} else {
+  // Development environment
+  dbPath = path.join(__dirname, 'hrms.db');
+}
+
+console.log(`Using database path: ${dbPath}`);
+
+// Ensure the directory exists for the database file
+const dbDir = path.dirname(dbPath);
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true });
+}
+
+const db = new sqlite3.Database(dbPath, (err) => {
+  if (err) {
+    console.error('Error opening database:', err.message);
+  } else {
+    console.log('Connected to the SQLite database.');
+  }
+});
 
 db.serialize(() => {
   db.run(`
