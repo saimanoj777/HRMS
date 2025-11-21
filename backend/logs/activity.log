@@ -16,3 +16,7 @@
 [2025-11-21T07:35:06.571Z] User 'admin' assigned employee 2 to team(s) 1
 [2025-11-21T07:49:44.734Z] User 'admin' assigned employee 2 to team(s) 1, 2
 [2025-11-21T07:56:56.270Z] User 'admin' assigned employee 2 to team(s) 3
+[2025-11-21T08:00:36.777Z] User 'admin' deleted team 3
+[2025-11-21T08:03:54.151Z] User 'admin' added a new team with ID 4 (Team A)
+[2025-11-21T08:04:50.830Z] User 'admin' added a new employee with ID 3
+[2025-11-21T08:05:02.453Z] User 'admin' deleted employee 3
