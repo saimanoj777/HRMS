@@ -1,0 +1,18 @@
+[2025-11-20T18:22:53.396Z] User 'sai' logged in
+[2025-11-20T18:23:32.765Z] User 'sai' added a new employee with ID 1
+[2025-11-20T18:23:55.909Z] User 'sai' added a new team with ID 1 (HUMANS)
+[2025-11-20T18:24:23.116Z] User 'sai' assigned employee 1 to team(s) 
+[2025-11-20T18:25:18.064Z] User 'sai' deleted team 1
+[2025-11-20T18:25:25.805Z] User 'sai' deleted employee 1
+[2025-11-21T07:16:35.023Z] User 'sai' logged in
+[2025-11-21T07:19:16.958Z] User 'admin' created organisation 'Wox' and registered
+[2025-11-21T07:22:47.263Z] User 'admin' logged in
+[2025-11-21T07:23:39.995Z] User 'admin' added a new employee with ID 2
+[2025-11-21T07:23:54.050Z] User 'admin' assigned employee 2 to team(s) 1
+[2025-11-21T07:24:12.751Z] User 'admin' added a new team with ID 2 (TECH)
+[2025-11-21T07:24:39.475Z] User 'admin' assigned employee 2 to team(s) 2
+[2025-11-21T07:26:38.319Z] User 'admin' added a new team with ID 3 (Head)
+[2025-11-21T07:34:37.213Z] User 'admin' assigned employee 2 to team(s) 2
+[2025-11-21T07:35:06.571Z] User 'admin' assigned employee 2 to team(s) 1
+[2025-11-21T07:49:44.734Z] User 'admin' assigned employee 2 to team(s) 1, 2
+[2025-11-21T07:56:56.270Z] User 'admin' assigned employee 2 to team(s) 3
