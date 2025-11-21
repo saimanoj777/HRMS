@@ -76,22 +76,19 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
-// 404 handler - Use a proper route pattern instead of '*'
-app.use((req, res) => {
+// 404 handler - Proper way for Express v5
+app.use((req, res, next) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-const server = app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`HRMS Backend running at http://0.0.0.0:${PORT}`);
 });
 
 // Graceful shutdown
 process.on('SIGINT', () => {
   console.log('\nShutting down gracefully...');
-  server.close(() => {
-    console.log('Server closed.');
-    process.exit(0);
-  });
+  process.exit(0);
 });
 
 module.exports = app;
